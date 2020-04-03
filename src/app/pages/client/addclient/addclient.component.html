@@ -330,7 +330,7 @@
                  >
          
         </div> -->
-        <file-upload (onFileUpload)="uploadImage($event)"></file-upload>
+        <file-upload (onFileUpload)="uploadImage($event)"  (onLoading)="toggleLoader($event)"></file-upload>
         <br>
         <button type="submit"
                 nbButton
