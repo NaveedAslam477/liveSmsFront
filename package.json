@@ -12,7 +12,8 @@
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
-    "start": "ng serve",
+    "start": "node server.js",
+    "postinstall": "ng build",
     "build": "ng build",
     "build:prod": "npm run build -- --prod --aot",
     "test": "ng test",
@@ -100,7 +101,12 @@
     "stylelint": "7.13.0",
     "ts-node": "3.2.2",
     "tslint": "^5.7.0",
+    "express": "^4.17.1",
     "tslint-language-service": "^0.9.9",
     "typescript": "3.4.5"
+  },
+  "engines": {
+    "node": "~12.16.0",
+    "npm": "3.10.10"
   }
 }
