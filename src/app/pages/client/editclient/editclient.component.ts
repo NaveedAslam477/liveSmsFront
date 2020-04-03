@@ -92,7 +92,8 @@ export class EditclientComponent implements OnInit {
       )
       .subscribe((res: any) => {
         this.toggleLoader();
-        // res[0].image= this.url+res[0].image;
+        this.url = this.url + res[0].image;
+        debugger
         this.client = res[0];
         console.log("get by id", res);
       });
