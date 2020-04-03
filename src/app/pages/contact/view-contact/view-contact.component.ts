@@ -3,6 +3,7 @@ import { ContactModel } from '../contact.model';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'view-contact',
@@ -30,7 +31,7 @@ res:any;
 
   ngOnInit() {
     debugger
-    this.http.get("http://localhost:3000/Contact/getByUserId/"+this.route.snapshot.params.id).subscribe((res:any)=>{
+    this.http.get(environment.backendUrl +  "/Contact/getByUserId/"+this.route.snapshot.params.id).subscribe((res:any)=>{
       this.contact=res[0];
         console.log("get contact by id",res)
       })
