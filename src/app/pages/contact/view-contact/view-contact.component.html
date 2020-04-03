@@ -1,0 +1,35 @@
+<nb-card>
+  <nb-card-header>VIEW CONTACTS</nb-card-header>
+  <nb-card-body>
+    <ngx-datatable 
+    class="fixed-header material"
+    [offset]="page"
+    [loadingIndicator]="loadingIndicator"
+  
+    [rowHeight]="50"
+    [limit]="10"
+    [scrollbarH]="true"
+    [headerHeight]="50"
+    [footerHeight]="35"
+    [count]="totalPage"
+    (page)="changePage($event)"
+    (sort)="onSort($event)"
+    [columnMode]="'force'"
+    [rows]="dataList"
+    [columns]="columns"
+  >
+  <ngx-datatable-column *ngFor="let col of columns; let i = index;" name="{{col.name}}" prop="{{col.prop}}">
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Actions" sortable="false">
+    <ng-template #roleTemplate let-row="row" let-value="value" ngx-datatable-cell-template>
+        <div class="example-button-row">
+        <button mat-raised-button color="accent"(click)='onEdit(row)'>Edit</button>
+        <button mat-raised-button color="warn" (click)='onDelete(row)'>Delete</button>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  </ngx-datatable>
+  </nb-card-body>
+</nb-card>
+
+

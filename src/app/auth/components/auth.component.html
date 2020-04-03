@@ -1,0 +1,22 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>
+        <nav class="navigation text-center">
+          <a href="JavaScript:void(0);">
+            <img src="assets/images/naveed.jpg" height="40" alt="">
+          </a>
+        </nav>
+      </nb-card-header>
+      <nb-card-body>
+        <nb-auth-block>
+          <re-captcha #captchaRef="reCaptcha"
+              (resolved)="$event && resolved($event)" 
+              siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              size="invisible" style="transform:scale(0.7);transform-origin:0;"></re-captcha>
+          <router-outlet></router-outlet>
+        </nb-auth-block>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

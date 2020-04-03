@@ -1,0 +1,79 @@
+
+ <div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>ADD NEW CONTACT</nb-card-header>
+      <nb-card-body>
+        <form action="" #myForm="ngForm" (ngSubmit)="addcontact(); myForm.reset()">
+        <div class="form-control-group">
+          <label class="label">COUNTRY CODE</label>
+                 <nb-select name="country" [(ngModel)]="contact.country" >
+                  <nb-option *ngFor="let country of countries" >{{country.name}}</nb-option>
+                </nb-select>
+        </div>
+        
+        <div class="form-control-group">
+          <label class="label">PHONE NUMBER</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="contact.phone_number"
+                 name="phone_number"
+                >
+        </div>
+    
+    
+        
+    
+        <div class="form-control-group">
+          <label class="label">FIRST NAME</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="contact.first_name"
+                 name="first_name"
+          >
+        </div>
+        <div class="form-control-group">
+          <label class="label">LAST NAME</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="contact.last_name"    
+                 name="last_name" 
+          >
+        </div>
+        <div class="form-control-group">
+          <label class="label">EMAIL</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="contact.email_address"  
+                 name="email_address"
+          >
+        </div>
+        <div class="form-control-group">
+          <label class="label">COMPANY</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="contact.company"
+                 name="company"
+          >
+        </div>
+        <div class="form-control-group">
+          <label class="label">USER NAME</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="contact.user_name"
+                 name="user_name" 
+          >
+        </div>
+        <br>
+        <button type="submit"
+                nbButton
+                size="small"
+                status="success"
+                [class.btn-pulse]="submitted"
+                >
+          + Add
+        </button>
+      </form>
+      </nb-card-body>
+    </nb-card>
+  </div>

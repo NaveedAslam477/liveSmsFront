@@ -1,0 +1,46 @@
+<div class="row">
+    <nb-card> 
+      <nb-card-header>SEND SMS</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="inputsenderid" class="label">SENDER ID</label>
+              <input type="text" [(ngModel)]="smsData.senderId" nbInput fullWidth id="inputsenderid">
+            </div>
+          </div>
+
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="inputLastName" class="label">MESSAGE TYPE</label>
+              <nb-select placeholder="Select Message Type" [(ngModel)]="smsData.smsType">
+                <nb-option value="Plain">Plain</nb-option>
+                <nb-option value="Unicode">Unicode</nb-option>
+                <nb-option value="Arabic">Arabic</nb-option>
+              </nb-select>
+            </div>
+        </div>
+        <div class="col-md-12 col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="gateway" class="label">SMS GATEWAY</label>
+            <nb-select placeholder="Select Sms Gateway" [(ngModel)]="smsData.smsGateway">
+              <nb-option value="Option 1">Option 1</nb-option>
+              <nb-option value="Option 2">Option 2</nb-option>
+              <nb-option value="Option 3">Option 3</nb-option>
+              <nb-option value="Option 4">Option 4</nb-option>
+            </nb-select>
+          </div>
+        </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="textarea" class="label">MESSAGE</label>
+              <textarea nbInput fullWidth [(ngModel)]="smsData.message"></textarea>
+            </div>
+          </div>
+
+        <button type="submit" nbButton (click)="sendSms()">Submit</button>
+      </div>
+      </nb-card-body>
+    </nb-card>
+  </div>

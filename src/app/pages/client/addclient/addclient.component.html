@@ -1,0 +1,345 @@
+
+ <div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Add New Client</nb-card-header>
+      <nb-card-body>
+        <form action="/upload" #myForm="ngForm" (ngSubmit)="allclient(); myForm.reset()" enctype="multipart/form-data">
+        <div class="full-name-inputs">
+        <div class="form-control-group" >
+          <label class="label">First Name</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.fname"
+                 name="Firstname"
+                 #Firstname="ngModel"
+                 placeholder="First Name"
+                 [status]="Firstname.dirty ? (Firstname.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="Firstname.invalid && Firstname.touched ? true : null">
+          <ng-container *ngIf="Firstname.invalid && Firstname.touched">
+            <p class="caption status-danger" *ngIf="Firstname.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+      
+          <div class="form-control-group">
+            <label class="label">Last Name</label>
+            <input nbInput
+                   fullWidth
+                   [(ngModel)]="client.lname"
+                   name="Lastname"
+                   #Lastname="ngModel"
+                   placeholder="last Name"
+                   [status]="Lastname.dirty ? (Lastname.invalid  ? 'danger' : 'success') : ''"
+                   required="required"
+                   [minlength]="4"
+                   [attr.aria-invalid]="Lastname.invalid && Lastname.touched ? true : null">
+            <ng-container *ngIf="Lastname.invalid && Lastname.touched">
+              <p class="caption status-danger" *ngIf="Lastname.errors?.required">
+                Field is required!
+              </p>
+            </ng-container>
+          </div>
+        </div>
+          <div class="form-control-group">
+            <label class="label">Company</label>
+            <input nbInput
+                   fullWidth
+                   [(ngModel)]="client.company"
+                   name="company1"
+                   #company1="ngModel"
+                   placeholder="company"
+                   [status]="company1.dirty ? (company1.invalid  ? 'danger' : 'success') : ''"
+                   required="required"
+                   [minlength] ="4"
+                   [attr.aria-invalid]="company1.invalid && company1.touched ? true : null">
+            <ng-container *ngIf="company1.invalid && company1.touched">
+              <p class="caption status-danger" *ngIf="company1.errors?.required">
+                Field is required!
+              </p>
+            </ng-container>
+          </div>
+        
+        <!-- <input type="password" nbInput fullWidth placeholder="Password"> -->
+        <div class="form-control-group">
+          <label class="label">WEBSITE</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.website"
+                 name="web"
+                 #web="ngModel"
+                 placeholder="WEBSITE"
+                 [status]="web.dirty ? (web.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="web.invalid && web.touched ? true : null">
+          <ng-container *ngIf="web.invalid && web.touched">
+            <p class="caption status-danger" *ngIf="web.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+    
+    
+        <div class="form-control-group">
+          <label class="label">EMAIL</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.email"
+                 name="Email"
+                 #Email="ngModel"
+                 placeholder="EMAIL"
+                 [status]="Email.dirty ? (Email.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="Email.invalid && web.touched ? true : null">
+          <ng-container *ngIf="Email.invalid && Email.touched">
+            <p class="caption status-danger" *ngIf="Email.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+    
+    
+        <div class="form-control-group">
+          <label class="label">User Name</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.username"
+                 name="Username"
+                 #Username="ngModel"
+                 placeholder="Username"
+                 [status]="Username.dirty ? (Username.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="Username.invalid && Username.touched ? true : null">
+          <ng-container *ngIf="Username.invalid && Username.touched">
+            <p class="caption status-danger" *ngIf="Username.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+    
+        <div class="form-control-group">
+          <label class="label">Password</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.password"
+                 name="Password"
+                 #Password="ngModel"
+                 placeholder="Enter Password">
+        </div>
+    
+        <div class="form-control-group">
+          <label class="label">Confirm Password</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.confirmpassword"
+                 name="ConfirmPassword"
+                 #ConfirmPassword="ngModel"
+                 placeholder="Enter Passwod">
+        </div>
+        <div class="form-control-group">
+          <label class="label">Phone</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.phone"
+                 name="Phone"
+                 #Phone="ngModel"
+                 placeholder="Enter Phone Number"
+                 [status]="Phone.dirty ? (Phone.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="Phone.invalid && Phone.touched ? true : null">
+          <ng-container *ngIf="Phone.invalid && Phone.touched">
+            <p class="caption status-danger" *ngIf="Phone.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+        <div class="form-control-group">
+          <label class="label">Address</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.address1"
+                 name="Address"
+                 #Address="ngModel"
+                 placeholder="Enter Address"
+                 [status]="Address.dirty ? (Address.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="Address.invalid && Address.touched ? true : null">
+          <ng-container *ngIf="Address.invalid && Address.touched">
+            <p class="caption status-danger" *ngIf="Address.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+        <div class="form-control-group">
+          <label class="label">MORE ADDRESS</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.address2"
+                 name="MoreAddress"
+                 #MoreAddress="ngModel"
+                 placeholder="Enter Address 2"
+                 [status]="MoreAddress.dirty ? (MoreAddress.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="MoreAddress.invalid && MoreAddress.touched ? true : null">
+          <ng-container *ngIf="MoreAddress.invalid && MoreAddress.touched">
+            <p class="caption status-danger" *ngIf="MoreAddress.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+    
+    
+        <div class="form-control-group">
+          <label class="label">STATE</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.state"
+                 name="State"
+                 #State="ngModel"
+                 placeholder="State Name"
+                 [status]="State.dirty ? (State.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="State.invalid && State.touched ? true : null">
+          <ng-container *ngIf="State.invalid && State.touched">
+            <p class="caption status-danger" *ngIf="State.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+    
+    
+        
+        <div class="form-control-group">
+          <label class="label">City</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.city"
+                 name="City"
+                 #City="ngModel"
+                 placeholder="City Name"
+                 [status]="City.dirty ? (City.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="City.invalid && City.touched ? true : null">
+          <ng-container *ngIf="City.invalid && City.touched">
+            <p class="caption status-danger" *ngIf="City.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+    
+        
+        <div class="form-control-group">
+          <label class="label">Passcode</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.postcode"
+                 name="Passcode"
+                 #Passcode="ngModel"
+                 placeholder="Enter Passcode"
+                 [status]="Passcode.dirty ? (Passcode.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="Passcode.invalid && Passcode.touched ? true : null">
+          <ng-container *ngIf="Passcode.invalid && Passcode.touched">
+            <p class="caption status-danger" *ngIf="Passcode.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+        <div class="form-control-group">
+          <label class="label">Country</label>
+          <br>
+          <nb-select name="s1" placeholder="Country"  [(ngModel)]="client.api_access" >
+            <nb-option value="0">United State</nb-option>
+            <nb-option value="1">Norway</nb-option>
+            <nb-option value="2">Pakistan</nb-option>
+            <nb-option value="3">United Kingdom</nb-option>
+            <nb-option value="4">Austrila</nb-option>
+          </nb-select>
+        </div>
+        <div class="form-control-group">
+          <label class="label">RESELLER PANEL</label>
+          <br>
+          <nb-select name="s2" placeholder="Select Reseller Panel" [(ngModel)]="client.api_key" >
+            <nb-option value="1">yes</nb-option>
+          <nb-option value="2">No</nb-option>
+          </nb-select>
+        </div>
+     
+        <div class="form-control-group">
+          <label class="label">API ACCESS</label>
+          <br>
+          <nb-select name="s3" placeholder="Select Api" [(ngModel)]="client.api_gateway" >
+            <nb-option value="1">yes</nb-option>
+            <nb-option value="2">No</nb-option>
+          </nb-select>
+        </div>
+        <div class="form-control-group">
+          <label class="label">CLIENT GROUP</label>
+          <br>
+          <nb-select name="s4" placeholder="Select Client Group"[(ngModel)]="client.reseller">
+            <nb-option value="1">customer</nb-option>
+          </nb-select>
+        </div>
+        <div class="form-control-group">
+          <label class="label">SMS GATEWAY</label>
+          <br>
+          <nb-select name="s5" placeholder="Select sms Gateway" [(ngModel)]="client.sms_gateway" >
+            <nb-option value="1">Twilio</nb-option>
+          <nb-option value="2">SendPulse</nb-option>
+          </nb-select>
+        </div>
+      
+        <div class="form-control-group">
+          <label class="label">Sms Limit</label>
+          <input nbInput
+                 fullWidth
+                 [(ngModel)]="client.sms_limit"
+                 name="SmsLimit"
+                 #SmsLimit="ngModel"
+                 placeholder="Enter Sms Limit"
+                 [status]="SmsLimit.dirty ? (SmsLimit.invalid  ? 'danger' : 'success') : ''"
+                 required="required"
+                 [minlength] ="4"
+                 [attr.aria-invalid]="SmsLimit.invalid && SmsLimit.touched ? true : null">
+          <ng-container *ngIf="SmsLimit.invalid && SmsLimit.touched">
+            <p class="caption status-danger" *ngIf="SmsLimit.errors?.required">
+              Field is required!
+            </p>
+          </ng-container>
+        </div>
+        <!-- <div class="form-control-group">
+          <label class="label">Profile Image</label>
+          <input  nbInput type="file" 
+                 fullWidth
+                 name="image"
+                 (change)="uploadImage($event)"
+                 >
+         
+        </div> -->
+        <file-upload (onFileUpload)="uploadImage($event)"></file-upload>
+        <br>
+        <button type="submit"
+                nbButton
+                size="small"
+                status="success" [disabled]="submitted || Firstname.value == null || Firstname.value == ''
+                || Lastname.value == null || Lastname.value == ''"
+                [class.btn-pulse]="submitted"
+                >
+          + Add
+        </button>
+      </form>
+      </nb-card-body>
+    </nb-card>
+  </div>

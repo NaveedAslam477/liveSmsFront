@@ -1,0 +1,18 @@
+<div class="row">
+    <nb-card>
+      <nb-card-header>UPLOAD IMAGE</nb-card-header>
+      <nb-card-body>
+        <form action="/upload" #myForm="ngForm" enctype="multipart/form-data">
+        <div class="row" >
+          <div class="col-sm-12">
+            <file-upload (onFileUpload)="uploadImage($event)"></file-upload>
+          </div>
+        </div>
+        <button  nbButton (click)="submit()">Upload</button>
+      </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+
+

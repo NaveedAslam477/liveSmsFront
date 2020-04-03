@@ -1,0 +1,235 @@
+<!-- <nb-stepper #stepperRef orientation="horizontal"> -->
+  <!-- <nb-step label="Register through">
+    <h1 id="title" class="title">Register through</h1>
+    <p class="sub-title">Please select your prefered method of communication.</p>
+    <div class="row">
+      <div class="col-6">
+      <button nbButton            
+              fullWidth
+              status="primary"
+              size="large"
+              (click)="useEmailClick()">
+              Email
+        </button>
+      </div>
+      <div class="col-6">
+        <button nbButton
+                fullWidth
+                status="primary"
+                size="large"
+                (click)="usePhoneClick()">
+                Phone
+        </button>
+      </div>
+    </div>
+  </nb-step> -->
+  <!-- <nb-step label="Register"> -->
+
+    <h1 id="title" class="title">Register</h1>
+
+    <nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
+      <p class="alert-title"><b>Oh snap!</b></p>
+      <ul class="alert-message-list">
+        <li *ngFor="let error of errors" class="alert-message">{{ error.message }}</li>
+      </ul>
+    </nb-alert>
+
+    <nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">
+      <p class="alert-title"><b>Hooray!</b></p>
+      <ul class="alert-message-list">
+        <li *ngFor="let message of messages" class="alert-message">{{ message.message }}</li>
+      </ul>
+    </nb-alert>
+
+    <form  #form="ngForm" aria-labelledby="title">
+
+      <div class="form-group row">
+        <label class="label col-sm-3 col-form-label" for="input-name">Full name</label>
+        <div class="col-sm-9">
+          <input nbInput
+                 [(ngModel)]="user.fullName"
+                 #fullName="ngModel"
+                 id="input-name"
+                 name="fullName"
+                 placeholder="Full name"
+                 autofocus
+                 fullWidth
+                 [status]="fullName.dirty ? (fullName.invalid  ? 'danger' : 'success') : ''"
+                 [required]="getConfigValue('forms.validation.fullName.required')"
+                 [minlength]="getConfigValue('forms.validation.fullName.minLength')"
+                 [maxlength]="getConfigValue('forms.validation.fullName.maxLength')"
+                 [attr.aria-invalid]="fullName.invalid && fullName.value ? true : null" />
+
+          <ng-container *ngIf="fullName.invalid && fullName.touched">
+            <span class="caption status-danger col" *ngIf="fullName.errors?.required">
+              Full name is required!
+            </span>
+            <span class="caption status-danger col" *ngIf="fullName.errors?.minlength || fullName.errors?.maxlength">
+              Full name should contains
+              from {{getConfigValue('forms.validation.fullName.minLength')}}
+              to {{getConfigValue('forms.validation.fullName.maxLength')}}
+              characters
+            </span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="label col-sm-3 col-form-label" for="input-pic">Profile picture</label>
+        <div class="col-sm-9">
+          <input nbInput
+                 [(ngModel)]="user.picture"
+                 #picture="ngModel"
+                 id="input-pic"
+                 name="picture"
+                 type="file"
+                 autofocus
+                 fullWidth
+                 accept=".png, .jpg, .jpeg"
+                 [status]="picture.dirty ? (picture.invalid  ? 'danger' : 'success') : ''"
+                 [required]="getConfigValue('forms.validation.picture.required')"
+                 [minlength]="getConfigValue('forms.validation.picture.minLength')"
+                 [maxlength]="getConfigValue('forms.validation.picture.maxLength')"
+                 [attr.aria-invalid]="picture.invalid && picture.touched ? true : null">
+
+          <ng-container *ngIf="picture.invalid && picture.touched">
+            <span class="caption status-danger col" *ngIf="picture.errors?.required">
+              Profile picture is required!
+            </span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="form-group row" *ngIf="useEmail">
+        <label class="label col-sm-3 col-form-label" for="input-email">Email address</label>
+        <div class="col-sm-9">
+          <input nbInput
+                 [(ngModel)]="user.email"
+                 #email="ngModel"
+                 id="input-email"
+                 name="email"
+                 pattern=".+@.+..+"
+                 placeholder="Email address"
+                 fullWidth
+                 [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
+                 [required]="getConfigValue('forms.validation.email.required')"
+                 [attr.aria-invalid]="email.invalid && email.touched ? true : null">
+
+          <ng-container *ngIf="email.invalid && email.touched">
+            <span class="caption status-danger col" *ngIf="email.errors?.required">
+              Email is required!
+            </span>
+            <span class="caption status-danger col" *ngIf="email.errors?.pattern">
+              Email should be the real one!
+            </span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="form-group row" *ngIf="!useEmail">
+        <label class="label col-sm-3 col-form-label" for="input-phone">Phone number</label>
+        <div class="col-sm-9">
+          <ngx-intl-tel-input [(ngModel)]="user.phoneNumber"
+                              #phone="ngModel"
+                              id="input-phone"
+                              name="phone"
+                              [cssClass]="'register-input-phone'"
+                              [enableAutoCountrySelect]="false"
+                              [enablePlaceholder]="true"
+                              [searchCountryFlag]="true"
+                              [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                              [selectFirstCountry]="false"
+                              [selectedCountryISO]="CountryISO.UnitedStates"
+                              [maxLength]="15"
+                              [tooltipField]="TooltipLabel.Name"
+                              [phoneValidation]="true"
+                              [separateDialCode]="true"
+                              [required]="true"
+                              [attr.aria-invalid]="phone.invalid && phone.touched ? true : null">
+
+            <ng-container *ngIf="phone.invalid && phone.touched">
+              <span class="caption status-danger col" *ngIf="phone.errors?.required">
+                Phone is required!
+              </span>
+              <p class="caption status-danger col" *ngIf="!phone.errors?.required">
+                Phone should be the real one!
+              </p>
+            </ng-container>
+          </ngx-intl-tel-input>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="label col-sm-3 col-form-label" for="input-password">Password</label>
+        <div class="col-sm-9">
+          <input nbInput
+                 [(ngModel)]="user.password"
+                 #password="ngModel"
+                 type="password"
+                 id="input-password"
+                 name="password"
+                 placeholder="Password"
+                 pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~!@#$%^&*()_+';.,?><:|}{]).{8,}$"
+                 fullWidth
+                 [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : ''"
+                 [required]="getConfigValue('forms.validation.password.required')"
+                 [minlength]="getConfigValue('forms.validation.password.minLength')"
+                 [maxlength]="getConfigValue('forms.validation.password.maxLength')"
+                 [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+
+          <ng-container *ngIf="password.invalid && password.touched">
+            <span class="caption status-danger col" *ngIf="password.errors?.required">
+              Password is required!
+            </span>
+            <p class="caption status-danger" *ngIf="password.errors?.minlength || password.errors?.maxlength ||password.invalid">
+              Password must contain 8 to 16 characters & at least one lowercase and uppercase letter
+              & one special character
+            </p>
+          </ng-container>
+        </div> 
+      </div>
+
+      <div class="form-group row">
+        <label class="label col-sm-3 col-form-label" for="input-re-password">Repeat password</label>
+        <div class="col-sm-9">
+          <input nbInput
+                 [(ngModel)]="user.confirmPassword"
+                 #rePass="ngModel"
+                 type="password"
+                 id="input-re-password"
+                 name="rePass"
+                 placeholder="Confirm Password"
+                 fullWidth
+                 [status]="rePass.dirty ? (rePass.invalid || password.value != rePass.value  ? 'danger' : 'success') : ''"
+                 [required]="getConfigValue('forms.validation.password.required')"
+                 [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null">
+
+          <ng-container *ngIf="rePass.touched">
+            <p class="caption status-danger" *ngIf="rePass.invalid && rePass.errors?.required">
+              Password confirmation is required!
+            </p>
+            <p class="caption status-danger" *ngIf="password.value != rePass.value && !rePass.errors?.required">
+              Password does not match the confirm password.
+            </p>
+          </ng-container>
+        </div>
+        
+      </div>
+
+      <button nbButton
+              fullWidth
+              status="primary"
+              size="large" 
+              [disabled]="submitted || !form.valid || password.value != rePass.value || fullName.value == null || fullName.value == ''"
+              [class.btn-pulse]="submitted"
+              (click)="registerbtnClicked()">
+        Register
+      </button>
+    </form>
+
+    <section class="another-action" aria-label="Sign in">
+      Already have an account? <a class="text-link" routerLink="../login">Log in</a>
+    </section>
+
+  <!-- </nb-step> -->
+<!-- </nb-stepper> -->

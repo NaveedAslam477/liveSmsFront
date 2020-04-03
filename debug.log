@@ -1,0 +1,4 @@
+[0325/003043.684:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0330/025949.211:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0330/092858.674:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0330/113551.150:ERROR:crash_report_database_win.cc(428)] unexpected header

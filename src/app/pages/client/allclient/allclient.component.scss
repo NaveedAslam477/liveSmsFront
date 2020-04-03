@@ -1,0 +1,16 @@
+@import '../../../@theme/styles/themes';
+@include nb-install-component() {
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+ 
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+
+}
+button{
+  margin-top: 4px;
+  margin-right: 10px;
+}

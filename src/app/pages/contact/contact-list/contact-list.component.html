@@ -1,0 +1,58 @@
+<nb-card accent="control">
+  <nb-card-header>
+   Phone Book
+  </nb-card-header>
+  <nb-card-body>
+    <div class="card-row">
+      <div class="card-col">
+        <nb-card size="tiny" accent="info">
+          <nb-card-header>ADD NEW LIST</nb-card-header>
+          <nb-card-body>
+            <form action="" #myForm="ngForm" (ngSubmit)="addContactGroup(); myForm.reset()">
+            <input type="text" nbInput  fullWidth  placeholder="Last Name" [(ngModel)]="contact.last_name" name="last_name"> 
+            <button nbButton outline status="success" style="margin-top: 24px;
+            margin-left: 92%;">Add</button>
+            </form>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+
+      
+      <div class="card-col">
+        <nb-card size="medium" accent="info">
+      <ngx-datatable 
+      class="fixed-header material"
+      [loadingIndicator]="loadingIndicator"
+     
+      [rowHeight]="50"
+      [limit]="20"
+      [scrollbarH]="true"
+      [headerHeight]="50"
+      [footerHeight]="35"
+      [count]="totalPage"
+      (page)="changePage($event)"
+      (sort)="onSort($event)"
+      [columnMode]="'force'"
+      [rows]="contactList"
+      [columns]="columns"
+    >
+    <ngx-datatable-column *ngFor="let col of columns; let i = index;" name="{{col.name}}" prop="{{col.prop}}">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Actions" sortable="false">
+      <ng-template #roleTemplate let-row="row" let-value="value" ngx-datatable-cell-template>
+          <div class="example-button-row">
+          <button mat-raised-button color="accent" (click)='onview(row)'><nb-icon icon="eye"></nb-icon>view Contacts</button>
+          <button mat-raised-button color="warn" (click)='onAdd()'>Add Contacts</button>
+          <button mat-raised-button color="accent" (click)='onEdit(row)'>Edit</button>
+          <button mat-raised-button color="warn" (click)='onDelete(row)'>Delete</button>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+    </nb-card>
+    </div>
+    </div>
+    
+  </nb-card-body>
+</nb-card>
