@@ -13,9 +13,10 @@ import { ViewContactComponent } from './view-contact/view-contact.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { NbIconModule } from '@nebular/theme';
+import { ImportcontactComponent } from './importcontact/importcontact.component';
 
 @NgModule({
-  declarations: [ContactListComponent, ViewContactComponent, AddContactComponent, EditContactComponent],
+  declarations: [ContactListComponent, ViewContactComponent, AddContactComponent, EditContactComponent, ImportcontactComponent],
   imports: [
     CommonModule,
     FormsModule,

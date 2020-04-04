@@ -35,6 +35,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: { icon: 'user-tie', pack: 'fa-solid' },
         link: '/pages/contact/contact-list',
       },
+      {
+        title: 'Import ontact',
+        icon: { icon: 'user-tie', pack: 'fa-solid' },
+        link: '/pages/contact/importcontact',
+      },
     ],
   },
 ];

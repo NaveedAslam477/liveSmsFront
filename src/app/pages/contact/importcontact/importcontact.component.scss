@@ -1,0 +1,64 @@
+nb-card-body {
+    overflow: visible;
+    padding-top: 0;
+  
+    > * {
+      margin-top: 1rem;
+    }
+  }
+  
+  .full-name-inputs,
+  .validation-checkboxes {
+    display: flex;
+    margin: 0 -0.5rem;
+  
+    > * {
+      margin: 0 0.5rem;
+    }
+  }
+  
+  .checkbox-radio {
+    display: flex;
+  }
+  
+  .demo-items {
+    flex: 1 0 33%;
+  }
+  nb-select{
+    display: inline;
+  }
+  i{
+  margin-right: 10px;
+  }
+  .btn-complete{
+    color: #ffffff !important;
+    background-color: #00BCD4 !important;
+    border-color: #00BCD4 !important;
+    line-height: 0rem !important
+  }
+:host {
+  display: block;
+  max-height: 25rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.card-row {
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.card-col {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0.5rem;
+}
+.btn-sm{
+  padding-left: 14px;
+    padding-right: 14px;
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 85%;
+    color: #ffffff !important;
+    background-color: #30DDBC !important;
+    border-color: #30DDBC !important;
+}

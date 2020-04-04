@@ -11,6 +11,7 @@ import { ContactListComponent } from './contact/contact-list/contact-list.compon
 import { ViewContactComponent } from './contact/view-contact/view-contact.component';
 import { AddContactComponent } from './contact/add-contact/add-contact.component';
 import { EditContactComponent } from './contact/edit-contact/edit-contact.component';
+import { ImportcontactComponent } from './contact/importcontact/importcontact.component';
 
 const routes: Routes = [
   {
@@ -78,6 +79,10 @@ const routes: Routes = [
       {
         path: "contact/view-contact/:id",
         component: ViewContactComponent
+      },
+      {
+        path: "contact/importcontact",
+        component:ImportcontactComponent
       },
     ]
   }
